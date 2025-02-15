@@ -46,28 +46,28 @@
         </nav>
         <!-- Product section-->
         <section class="py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://i.imgur.com/ebwADYy.jpeg" alt="..." /></div>
-                    <div class="col-md-6">
-                        <div class="small mb-1"></div>
-                       <div class="form-group">
-                           <h1>Anuncie aqui sua casa</h1>
-                <input type="text" id="nome" name="nome" placeholder="Nome da Casa" required>
-                       </div>
-
-                        <p class="lead">Casa Americana Padrão com o andar de baixo contendo sala cozinha e dois banheiros. Parte de cima da casa contendo 3 quartos cada um com um banheiro<p>
-                        <div class="d-flex">
-                            
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                Enviar
-                            </button>
-                        </div>
-                    </div>
+              <div class="container">
+        <div class="image-placeholder">600 x 700</div>
+        <div class="form-section">
+            <h2>Cadastro de Casa</h2>
+            <form action="resultado.html" method="GET">
+                <div class="form-group">
+                    <input type="text" id="nome" name="nome" placeholder="Nome da Casa" required>
                 </div>
-            </div>
-        </section>
+                <div class="form-group">
+                    <textarea id="descricao" name="descricao" rows="4" placeholder="Descrição" required></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="number" id="preco" name="preco" placeholder="Preço da Casa" required>
+                </div>
+                <div class="form-group">
+                    <input type="file" id="foto" name="foto" accept="image/*" required>
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+</body>
         <!-- Related items section-->
         <section class="py-5 bg-light">
             <div class="container px-4 px-lg-5 mt-5">
