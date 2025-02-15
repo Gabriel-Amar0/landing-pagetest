@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>- Resultado do Anúncio -</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <title>Resultado do Anúncio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,14 +21,10 @@
             width: 500px;
             text-align: center;
         }
-        .image-placeholder {
+        .image-preview {
             width: 100%;
-            height: 300px;
-            background: #ddd;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #777;
+            height: auto;
+            max-height: 300px;
             margin-bottom: 20px;
         }
     </style>
@@ -37,13 +32,12 @@
 <body>
     <div class="container">
         <h2 id="nome-casa"></h2>
-        <div class="image-placeholder" id="foto-preview">Imagem</div>
+        <img id="foto-casa" class="image-preview" src="" alt="Imagem da Casa">
         <p id="descricao-casa"></p>
         <h3 id="preco-casa"></h3>
     </div>
 
     <script>
-        // Função para obter os parâmetros da URL
         function getQueryParams() {
             const params = new URLSearchParams(window.location.search);
             return {
@@ -53,12 +47,15 @@
             };
         }
 
-        // Preenchendo a página com os dados do formulário
         const dados = getQueryParams();
         document.getElementById("nome-casa").textContent = dados.nome || "Nome não informado";
         document.getElementById("descricao-casa").textContent = dados.descricao || "Sem descrição";
         document.getElementById("preco-casa").textContent = dados.preco ? `R$ ${dados.preco}` : "Preço não informado";
+
+        const imagemCasa = localStorage.getItem("imagemCasa");
+        if (imagemCasa) {
+            document.getElementById("foto-casa").src = imagemCasa;
+        }
     </script>
 </body>
 </html>
-
