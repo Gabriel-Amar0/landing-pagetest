@@ -68,6 +68,23 @@
         </div>
     </div>
 </body>
+    <script>
+    document.querySelector("form").addEventListener("submit", function (event) {
+        const fileInput = document.getElementById("foto");
+        const file = fileInput.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                localStorage.setItem("imagemCasa", e.target.result);
+                document.querySelector("form").submit(); // Envia o formulário
+            };
+            reader.readAsDataURL(file);
+            event.preventDefault(); // Aguarda o carregamento da imagem antes de enviar
+        }
+    });
+</script>
+
         <!-- Related items section-->
         <section class="py-5 bg-light">
             <div class="container px-4 px-lg-5 mt-5">
