@@ -46,11 +46,12 @@
         </nav>
         <!-- Product section-->
         <section class="bg-dark text-center py-5">
-              <div class="container">
-        <div class="image-placeholder"></div>
+<body>
+    <div class="container">
+        <div class="image-placeholder" id="image-preview">600 x 700</div>
         <div class="form-section">
-            <h2 class="display-4 fw-bolder text-white"><em>Cadastro de Casa</em></h2>
-          
+            <h2>Cadastro de Casa</h2>
+            <form id="house-form">
                 <div class="form-group">
                     <input type="text" id="nome" name="nome" placeholder="Nome da Casa" required>
                 </div>
@@ -64,26 +65,30 @@
                     <input type="file" id="foto" name="foto" accept="image/*" required>
                 </div>
                 <button type="submit">Enviar</button>
-
+            </form>
         </div>
     </div>
-            <script>
-    document.querySelector("form").addEventListener("submit", function (event) {
-        const fileInput = document.getElementById("foto");
-        const file = fileInput.files[0];
 
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                localStorage.setItem("imagemCasa", e.target.result);
-                document.querySelector("form").submit(); // Envia o formulário
-            };
-            reader.readAsDataURL(file);
-            event.preventDefault(); // Aguarda o carregamento da imagem antes de enviar
-        }
-    });
-</script>
-
+    <script>
+        document.getElementById("house-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Impede o redirecionamento
+            
+            const nome = document.getElementById("nome").value;
+            const descricao = document.getElementById("descricao").value;
+            const preco = document.getElementById("preco").value;
+            const foto = document.getElementById("foto").files[0];
+            
+            if (foto) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById("image-preview").innerHTML = `<img src="${e.target.result}" alt="Imagem da Casa" style="width:100%; height:100%; object-fit: cover; border-radius: 10px;">`;
+                };
+                reader.readAsDataURL(foto);
+            }
+            
+            alert(`Nome: ${nome}\nDescrição: ${descricao}\nPreço: R$ ${preco}`);
+        });
+    </script>
 </body>
         <!-- Related items section-->
         <section class="py-5 bg-light">
